@@ -1,32 +1,15 @@
-// /*
-//  * Create a list that holds all of your cards
-//  */
-//
-//
-// /*
-//  * Display the cards on the page
-//  *   - shuffle the list of cards using the provided "shuffle" method below
-//  *   - loop through each card and create its HTML
-//  *   - add each card's HTML to the page
-//  */
-//
+// /*ADD MOVE COUNTER TO COUNT TOTAL MOVES
+// ADD THE TIME THAT WHILE THE GAME PLAYED
 
 // /*
 //  * set up the event listener for a card. If a card is clicked:
 //  *  - display the card's symbol (put this functionality in another function that you call from this one)
-//  *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+//  *  -
 //  *  - if the list already has another card, check to see if the two cards match
 //  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
 //  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
 //  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
 //  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-//  */
-//
-//  //1- set up event listener for a card
-//  //2- function that displays a card's symbol
-//  //3- functions that add the card to a list of "open cards"
-//  // -if the list already has another card check to see if two cards match
-//  // - if they dont match remove both cards from array and hide the symbols
 
 
 
@@ -44,6 +27,7 @@ function shuffle(array) {
 
     return array;
 }
+// Create a list that holds all of your cards
 var cards=[
   {
     rank: "udacity1",
@@ -174,12 +158,19 @@ var cards=[
 
 ];
 
+var number = 1;
+
+var mouseClicked = function() {
+  console.log("Mouse clicked", + number);
+  number++;
+
+}
 
 var cardsInPlay = [];
 var gameScore = 0;
 
 
-
+//set up event listener for a card
  var flipCard = function(){
    var cardId = this.getAttribute("data-id");
    if(cards[cardId].clicked === true) {
@@ -187,16 +178,19 @@ var gameScore = 0;
      return;
    }
 
-
+//function that displays a card's symbol
   cards[cardId].id = cardId;
   cards[cardId].clicked = true;
   this.classList.add("cube");
   this.setAttribute("id", cardId);
 	console.log("User flipped " + cards[cardId].rank );
+  // add the card to a list of "open cards"
+  //add the card to a *list* of "open" cards
 	cardsInPlay.push(cards[cardId]);
 	this.setAttribute("src", cards[cardId].cardImage);
 
   console.log("cardsInPlay length: ", cardsInPlay.length);
+  //if the list already has another card check to see if two cards match
   if(cardsInPlay.length === 2) {
     console.log("2 cards in cardsInPlay");
     checkForMatch();
@@ -207,15 +201,15 @@ var gameScore = 0;
     gameScore = 0;
     document.getElementById("trackScore").innerHTML = 0;
     resetGame();
-    alert("You won the game!");
+    alert("You won the game with total of", mouseClicked , "!");
   }
+  mouseClicked();
 };
 
 
 
-
 var checkForMatch = function(){
-
+  //if the list already has another card check to see if two cards match
   if(cardsInPlay.length <= 2){
       	if(cardsInPlay[0].rank === cardsInPlay[1].rank){
       		alert("you found a match!");
@@ -225,12 +219,13 @@ var checkForMatch = function(){
           cardsInPlay = [];
 
         }else{
+          //if they dont match remove both cards from array and hide the symbols
           setTimeout(function() {
             document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/back.png");
             document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/back.png");
             cardsInPlay[0].clicked = false;
             cardsInPlay[1].clicked = false;
-            alert("thats not match!");
+            // alert("thats not match!");
             cardsInPlay = [];
           }, 600);
 
@@ -243,7 +238,10 @@ var checkForMatch = function(){
 
 
  var createBoard= function(){
+   //shuffle the list of cards using the provided "shuffle" method above
+   //we need to shuffle the cards each time we create the new board
 	 shuffle(cards);
+   //loop through each card, create its HTML and add each card's HTML to the page
 	for(var i=0; i < cards.length; i++){
 		var cardElement= document.createElement("img");
 		cardElement.setAttribute("src", "img/back.png");
@@ -280,7 +278,4 @@ var resetGame = function(){
 
 	// create the new board
 	createBoard();
-
-
-
 };
