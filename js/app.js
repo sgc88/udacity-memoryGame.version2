@@ -162,8 +162,9 @@ var number = 1;
 
 var mouseClicked = function() {
   console.log("Mouse clicked", + number);
+  document.getElementById("moves").innerHTML= "Total Moves: " + number;
   number++;
-
+  return number;
 }
 
 var cardsInPlay = [];
@@ -201,7 +202,7 @@ var gameScore = 0;
     gameScore = 0;
     document.getElementById("trackScore").innerHTML = 0;
     resetGame();
-    alert("You won the game with total of", mouseClicked , "!");
+    alert("You won the game with total of " + mouseClicked() +  " moves!");
   }
   mouseClicked();
 };
