@@ -49,111 +49,127 @@ var cards=[
     rank: "udacity1",
     suit: "u",
     cardImage: "img/udacity.jpeg",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "udacity2",
     suit: "u2",
     cardImage: "img/udacityOr.jpeg",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "dog",
     suit: "aussie",
     cardImage: "img/aussie.jpg",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "ice-cream",
     suit: "sweet",
     cardImage: "img/ice-cream.png",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "jquery",
     suit: "jq",
     cardImage: "img/jquery.png",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "javascript",
     suit: "js",
     cardImage: "img/js.jpg",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "node",
     suit: "nd",
     cardImage: "img/node.jpeg",
-    id: null
+    id: null,
+    clicked: false
   },
 
   {
     rank: "react",
     suit: "rc",
     cardImage: "img/react.png",
-    id: null
+    id: null,
+    clicked: false
   },
 	{
 		rank: "udacity1",
 		suit: "u",
 		cardImage: "img/udacity.jpeg",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "udacity2",
 		suit: "u2",
 		cardImage: "img/udacityOr.jpeg",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "dog",
 		suit: "aussie",
 		cardImage: "img/aussie.jpg",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "ice-cream",
 		suit: "sweet",
 		cardImage: "img/ice-cream.png",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "jquery",
 		suit: "jq",
 		cardImage: "img/jquery.png",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "javascript",
 		suit: "js",
 		cardImage: "img/js.jpg",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "node",
 		suit: "nd",
 		cardImage: "img/node.jpeg",
-    id: null
+    id: null,
+    clicked: false
 	},
 
 	{
 		rank: "react",
 		suit: "rc",
 		cardImage: "img/react.png",
-    id: null
+    id: null,
+    clicked: false
 	}
 
 ];
@@ -165,9 +181,15 @@ var gameScore = 0;
 
 
  var flipCard = function(){
+   var cardId = this.getAttribute("data-id");
+   if(cards[cardId].clicked === true) {
+     console.log("already clicked");
+     return;
+   }
 
-	var cardId = this.getAttribute("data-id");
+
   cards[cardId].id = cardId;
+  cards[cardId].clicked = true;
   this.classList.add("cube");
   this.setAttribute("id", cardId);
 	console.log("User flipped " + cards[cardId].rank );
@@ -193,14 +215,18 @@ var checkForMatch = function(){
       		alert("you found a match!");
       		gameScore ++;
       		document.getElementById("trackScore").innerHTML= gameScore;
+
           cardsInPlay = [];
+
         }else{
           setTimeout(function() {
             document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/back.png");
             document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/back.png");
+            cardsInPlay[0].clicked = false;
+            cardsInPlay[1].clicked = false;
             alert("thats not match!");
             cardsInPlay = [];
-          }, 700);
+          }, 600);
 
         }
   }
