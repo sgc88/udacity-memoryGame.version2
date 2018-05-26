@@ -195,13 +195,19 @@ var gameScore = 0;
 	console.log("User flipped " + cards[cardId].rank );
 	cardsInPlay.push(cards[cardId]);
 	this.setAttribute("src", cards[cardId].cardImage);
-  //
-  // checkForMatch();
-  // flip2back();
+
   console.log("cardsInPlay length: ", cardsInPlay.length);
   if(cardsInPlay.length === 2) {
     console.log("2 cards in cardsInPlay");
     checkForMatch();
+  }
+  if(gameScore === 3){
+    console.log("your score is:", gameScore);
+    cardsInPlay = [];
+    gameScore = 0;
+    document.getElementById("trackScore").innerHTML = 0;
+    resetGame();
+    alert("You won the game!");
   }
 };
 
@@ -232,10 +238,6 @@ var checkForMatch = function(){
   }
 }
 
-function flip2back(){
-  console.log("flip back");
-
-}
 
 
 
@@ -272,9 +274,13 @@ var resetGame = function(){
 	newD.setAttribute("class", "board clearfix");
 	document.getElementById("mainTag").appendChild(newD);
 
+  for(var i=0; i < cards.length; i++ ){
+    cards[i].clicked = false;
+  }
 
 	// create the new board
 	createBoard();
-  gameScore=0;
+
+
 
 };
