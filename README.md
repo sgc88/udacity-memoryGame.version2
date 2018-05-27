@@ -81,9 +81,15 @@ Planned Features
 * ...
 Useful Researches:
 *https://www.google.com/
+
 *https://www.w3schools.com/jsref/met_win_clearinterval.asp
+
 *https://stackoverflow.com
+
 *https://developer.mozilla.org/
+
 *https://developer.mozilla.org/en-US/docs/Web/API/Element/setAttribute
+
 *https://classroom.udacity.com
+
 *https://www.safaribooksonline.com/library/view/javascript-cookbook/9781449390211/ch09s08.html
