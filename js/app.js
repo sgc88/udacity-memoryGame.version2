@@ -158,13 +158,22 @@ var cards=[
 
 ];
 
-var number = 1;
-
+var number = 0;
+var timeInSeconds = 0;
+var gameTime;
 var mouseClicked = function() {
   console.log("Mouse clicked", + number);
-  document.getElementById("moves").innerHTML= "Total Moves: " + number;
   number++;
-  return number;
+  if(number === 1) {
+    console.log("start game");
+    gameTime = setInterval(function() {
+      timeInSeconds++;
+      console.log("current time: ", timeInSeconds);
+    }, 1000);
+  }
+  document.getElementById("moves").innerHTML= "Total Moves: " + number;
+
+  // return number;
 }
 
 var cardsInPlay = [];
@@ -172,14 +181,16 @@ var gameScore = 0;
 
 
 //set up event listener for a card
- var flipCard = function(){
+var flipCard = function(){
    var cardId = this.getAttribute("data-id");
    if(cards[cardId].clicked === true) {
      console.log("already clicked");
      return;
    }
 
-//function that displays a card's symbol
+
+
+  //function that displays a card's symbol
   cards[cardId].id = cardId;
   cards[cardId].clicked = true;
   this.classList.add("cube");
@@ -196,15 +207,25 @@ var gameScore = 0;
     console.log("2 cards in cardsInPlay");
     checkForMatch();
   }
-  if(gameScore === 3){
-    console.log("your score is:", gameScore);
-    cardsInPlay = [];
-    gameScore = 0;
-    document.getElementById("trackScore").innerHTML = 0;
-    resetGame();
-    alert("You won the game with total of " + mouseClicked() +  " moves!");
-  }
+
   mouseClicked();
+
+
+  if(gameScore === 3){
+    clearInterval(gameTime);
+    setTimeout(function() {
+      alert("You won the game with total of " + number +  " moves, in " + timeInSeconds + " seconds!");
+      console.log("your score is:", gameScore);
+      cardsInPlay = [];
+      gameScore = 0;
+      timeInSeconds = 0;
+      document.getElementById("trackScore").innerHTML = 0;
+      document.getElementById("moves").innerHTML = "Total moves: " + 0;
+
+      resetGame();
+    }, 750);
+  }
+
 };
 
 
@@ -257,7 +278,8 @@ createBoard();
 
 
 var resetGame = function(){
-
+  clearInterval(gameTime);
+  timeInSeconds = 0;
 	// delete cards in cardsInPlay array
 	for(i = cardsInPlay.length; i> 0; i--){
 		cardsInPlay.pop();
@@ -279,4 +301,7 @@ var resetGame = function(){
 
 	// create the new board
 	createBoard();
+
+  number = 0;
+  document.getElementById("moves").innerHTML = "Total moves: " + number;
 };
