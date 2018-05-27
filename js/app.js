@@ -14,6 +14,122 @@
 
 
 
+
+// Create a list that holds all of your cards
+var cards=[
+  {
+    rank: "udacity1",
+    cardImage: "img/udacity.jpeg",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "udacity2",
+    cardImage: "img/udacityOr.jpeg",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "dog",
+    cardImage: "img/aussie.jpg",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "ice-cream",
+    cardImage: "img/ice-cream.png",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "jquery",
+    cardImage: "img/jquery.png",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "javascript",
+    cardImage: "img/js.jpg",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "node",
+    cardImage: "img/node.jpeg",
+    id: null,
+    clicked: false
+  },
+
+  {
+    rank: "react",
+    cardImage: "img/react.png",
+    id: null,
+    clicked: false
+  },
+	{
+		rank: "udacity1",
+		cardImage: "img/udacity.jpeg",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "udacity2",
+		cardImage: "img/udacityOr.jpeg",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "dog",
+		cardImage: "img/aussie.jpg",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "ice-cream",
+		cardImage: "img/ice-cream.png",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "jquery",
+		cardImage: "img/jquery.png",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "javascript",
+		cardImage: "img/js.jpg",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "node",
+		cardImage: "img/node.jpeg",
+    id: null,
+    clicked: false
+	},
+
+	{
+		rank: "react",
+		cardImage: "img/react.png",
+    id: null,
+    clicked: false
+	}
+
+];
+
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -27,136 +143,6 @@ function shuffle(array) {
 
     return array;
 }
-// Create a list that holds all of your cards
-var cards=[
-  {
-    rank: "udacity1",
-    suit: "u",
-    cardImage: "img/udacity.jpeg",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "udacity2",
-    suit: "u2",
-    cardImage: "img/udacityOr.jpeg",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "dog",
-    suit: "aussie",
-    cardImage: "img/aussie.jpg",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "ice-cream",
-    suit: "sweet",
-    cardImage: "img/ice-cream.png",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "jquery",
-    suit: "jq",
-    cardImage: "img/jquery.png",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "javascript",
-    suit: "js",
-    cardImage: "img/js.jpg",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "node",
-    suit: "nd",
-    cardImage: "img/node.jpeg",
-    id: null,
-    clicked: false
-  },
-
-  {
-    rank: "react",
-    suit: "rc",
-    cardImage: "img/react.png",
-    id: null,
-    clicked: false
-  },
-	{
-		rank: "udacity1",
-		suit: "u",
-		cardImage: "img/udacity.jpeg",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "udacity2",
-		suit: "u2",
-		cardImage: "img/udacityOr.jpeg",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "dog",
-		suit: "aussie",
-		cardImage: "img/aussie.jpg",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "ice-cream",
-		suit: "sweet",
-		cardImage: "img/ice-cream.png",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "jquery",
-		suit: "jq",
-		cardImage: "img/jquery.png",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "javascript",
-		suit: "js",
-		cardImage: "img/js.jpg",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "node",
-		suit: "nd",
-		cardImage: "img/node.jpeg",
-    id: null,
-    clicked: false
-	},
-
-	{
-		rank: "react",
-		suit: "rc",
-		cardImage: "img/react.png",
-    id: null,
-    clicked: false
-	}
-
-];
 
 var number = 0;
 var timeInSeconds = 0;
@@ -185,13 +171,13 @@ var gameSwitch = true;
 //set up event listener for a card
 var flipCard = function(){
   if(!gameSwitch) {
-    console.log("You cant play");
-    return;
-  }
-   var cardId = this.getAttribute("data-id");
-   if(cards[cardId].clicked === true) {
-     console.log("already clicked");
-     return;
+      console.log("You cant play");
+      return;
+    }
+     var cardId = this.getAttribute("data-id");
+     if(cards[cardId].clicked === true) {
+       console.log("already clicked");
+       return;
    }
 
 
@@ -283,7 +269,7 @@ var checkForMatch = function(){
 		cardElement.setAttribute("data-id", i);
 		cardElement.addEventListener("click", flipCard);
 		document.getElementById("game-board").appendChild(cardElement);
-	}
+	 }
 };
 
 
