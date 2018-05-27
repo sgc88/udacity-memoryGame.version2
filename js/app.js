@@ -1,20 +1,3 @@
-// /*ADD MOVE COUNTER TO COUNT TOTAL MOVES
-// ADD THE TIME THAT WHILE THE GAME PLAYED
-
-// /*
-//  * set up the event listener for a card. If a card is clicked:
-//  *  - display the card's symbol (put this functionality in another function that you call from this one)
-//  *  -
-//  *  - if the list already has another card, check to see if the two cards match
-//  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
-//  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
-//  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
-//  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
-
-
-
-
-
 // Create a list that holds all of your cards
 var cards=[
   {
@@ -140,7 +123,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -148,14 +130,13 @@ var number = 0;
 var timeInSeconds = 0;
 var gameTime;
 
+// counting clicks while game in play
 var mouseClicked = function() {
-  console.log("Mouse clicked", + number);
   number++;
   if(number === 1) {
-    console.log("start game");
+    //counting time while game in play
     gameTime = setInterval(function() {
       timeInSeconds++;
-      console.log("current time: ", timeInSeconds);
     }, 1000);
   }
   document.getElementById("moves").innerHTML= "Total Moves: " + number;
@@ -168,8 +149,9 @@ var gameScore = 0;
 var gameSwitch = true;
 
 
-//set up event listener for a card
+ //set up the event listener for a card
 var flipCard = function(){
+  // we need to make sure we can't flip more then 2 cards to compare
   if(!gameSwitch) {
       console.log("You cant play");
       return;
@@ -179,7 +161,6 @@ var flipCard = function(){
        console.log("already clicked");
        return;
    }
-
 
 
   //function that displays a card's symbol
@@ -199,6 +180,7 @@ var flipCard = function(){
     gameSwitch = false;
     console.log("gameSwitch is false");
     checkForMatch();
+    //enabligin the cards to be able play again
     setTimeout(function() {
         gameSwitch = true;
         console.log("you can now play");
@@ -208,12 +190,11 @@ var flipCard = function(){
 
   mouseClicked();
 
-
+//when the user wins the game
   if(gameScore === 3){
     clearInterval(gameTime);
     setTimeout(function() {
       alert("You won the game with total of " + number +  " moves, in " + timeInSeconds + " seconds!");
-      console.log("your score is:", gameScore);
       cardsInPlay = [];
       gameScore = 0;
       timeInSeconds = 0;
@@ -249,14 +230,10 @@ var checkForMatch = function(){
             cardsInPlay = [];
           }, 600);
 
-        }
+      }
   }
 
 }
-
-
-
-
 
  var createBoard= function(){
    //shuffle the list of cards using the provided "shuffle" method above
