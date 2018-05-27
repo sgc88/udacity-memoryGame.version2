@@ -11,15 +11,15 @@ Udacity- Memory Game
 ----------
 
 
-[Alt text](img/screenShot1.png)
+![Alt text](img/screenShot1.png)
 
 ----------
-[Alt text](mg/screenShot2.png)
+![Alt text](mg/screenShot2.png)
 
 ----------
 
 
-[Alt text](mg/screenShot3.png)
+![Alt text](mg/screenShot3.png)
 
 ----------
 
