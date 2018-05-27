@@ -161,6 +161,7 @@ var cards=[
 var number = 0;
 var timeInSeconds = 0;
 var gameTime;
+
 var mouseClicked = function() {
   console.log("Mouse clicked", + number);
   number++;
@@ -178,10 +179,15 @@ var mouseClicked = function() {
 
 var cardsInPlay = [];
 var gameScore = 0;
+var gameSwitch = true;
 
 
 //set up event listener for a card
 var flipCard = function(){
+  if(!gameSwitch) {
+    console.log("You cant play");
+    return;
+  }
    var cardId = this.getAttribute("data-id");
    if(cards[cardId].clicked === true) {
      console.log("already clicked");
@@ -204,9 +210,15 @@ var flipCard = function(){
   console.log("cardsInPlay length: ", cardsInPlay.length);
   //if the list already has another card check to see if two cards match
   if(cardsInPlay.length === 2) {
-    console.log("2 cards in cardsInPlay");
+    gameSwitch = false;
+    console.log("gameSwitch is false");
     checkForMatch();
+    setTimeout(function() {
+        gameSwitch = true;
+        console.log("you can now play");
+    }, 750)
   }
+
 
   mouseClicked();
 
@@ -253,6 +265,7 @@ var checkForMatch = function(){
 
         }
   }
+
 }
 
 
@@ -302,6 +315,8 @@ var resetGame = function(){
 	// create the new board
 	createBoard();
 
+  gameScore = 0;
   number = 0;
+  document.getElementById("trackScore").innerHTML = gameScore;
   document.getElementById("moves").innerHTML = "Total moves: " + number;
 };
