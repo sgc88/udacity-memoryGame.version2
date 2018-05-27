@@ -3,21 +3,22 @@
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
-
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
   <header>
       <h1>Matching Game</h1>
-      <p>You will win the game when you match 3 pairs! Look out for the score!</p>
+      <p>Win the game by finding all the matching pairs!</p>
   </header>
   <hr>
+
   <div class="container">
     <main id="mainTag">
         <div id="game-board" class="board clearfix" ></div>
         <h3>Score: <span id="trackScore">0</span></h3>
-        <div id="moves">Total moves: </div>
+        <div id="moves">Total moves: 0</div>
+        <div>Stars: <span id="stars">***</span></div>
         <button  id="startOver" onclick="resetGame()">Reset</button>
 
     </main>
