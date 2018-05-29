@@ -153,20 +153,15 @@ const mouseClicked = function() {
 
   if(number === 5) {
     stars.pop();
-    console.log("decremented stars: ", stars);
     const newStars = starString(stars);
     document.getElementById("stars").innerHTML = newStars;
   }
 
   if(number === 10) {
     stars.pop();
-    console.log("decremented stars: ", stars);
     const newStars = starString(stars);
     document.getElementById("stars").innerHTML = newStars;
   }
-
-
-  // return number;
 }
 
 let cardsInPlay = [];
@@ -178,12 +173,10 @@ let gameSwitch = true;
 const flipCard = function(){
   // we need to make sure we can't flip more then 2 cards to compare
   if(!gameSwitch) {
-      console.log("You cant play");
       return;
     }
      const cardId = this.getAttribute("data-id");
      if(cards[cardId].clicked === true) {
-       console.log("already clicked");
        return;
    }
 
@@ -193,22 +186,18 @@ const flipCard = function(){
   cards[cardId].clicked = true;
   this.classList.add("cube");
   this.setAttribute("id", cardId);
-	console.log("User flipped " + cards[cardId].rank );
-  // add the card to a list of "open cards"
-  //add the card to a *list* of "open" cards
+	//console.log("User flipped " + cards[cardId].rank );
+  // add the card to a list of "open cards"- add the card to a *list* of "open" cards
 	cardsInPlay.push(cards[cardId]);
 	this.setAttribute("src", cards[cardId].cardImage);
 
-  console.log("cardsInPlay length: ", cardsInPlay.length);
   //if the list already has another card check to see if two cards match
   if(cardsInPlay.length === 2) {
     gameSwitch = false;
-    console.log("gameSwitch is false");
     checkForMatch();
     //enabligin the cards to be able play again
     setTimeout(function() {
         gameSwitch = true;
-        console.log("you can now play");
     }, 750)
   }
 
@@ -218,15 +207,15 @@ mouseClicked();
   if(gameScore === 8){
     clearInterval(gameTime);
     setTimeout(function() {
-      alert("You won the game with total of " + number +  " moves, in " + timeInSeconds + " seconds!");
+      alert(`You won the game with total of ${number} moves, in ${timeInSeconds} seconds!`);
       if(stars.length === 3) {
-        alert("You did great! Your performance was " + stars.length + " stars!");
+        alert(`You did great! Your performance was ${stars.length} stars!`);
       }
       if(stars.length === 2) {
-        alert("You did good! Your performance was " + stars.length + " stars!");
+        alert(`You did good! Your performance was ${stars.length} stars!`);
       }
       if(stars.length === 1) {
-        alert("You did OK. Your performance was " + stars.length + " star, try to solve the memory game faster next time.");
+        alert(`You did OK. Your performance was ${stars.length} star, try to solve the memory game faster next time.`);
       }
       cardsInPlay = [];
       gameScore = 0;
