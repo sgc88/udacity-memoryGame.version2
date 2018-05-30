@@ -325,4 +325,6 @@ const resetGame = function(){
   document.getElementById("stars").innerHTML = "Stars:" + newStars;
   document.getElementById("trackScore").innerHTML = gameScore;
   document.getElementById("moves").innerHTML = "Total moves: " + number;
+  document.getElementById("timer").innerHTML = "Time: " + 0;
+
 };
