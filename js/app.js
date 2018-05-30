@@ -147,6 +147,7 @@ const mouseClicked = function() {
     //counting time while game in play
     gameTime = setInterval(function() {
       timeInSeconds++;
+      document.getElementById("timer").innerHTML = "Time: " + timeInSeconds;
     }, 1000);
   }
   document.getElementById("moves").innerHTML= "Total Moves: " + number;
@@ -242,6 +243,7 @@ mouseClicked();
       document.getElementById("stars").innerHTML = newStars;
       document.getElementById("trackScore").innerHTML = 0;
       document.getElementById("moves").innerHTML = "Total moves: " + 0;
+      document.getElementById("timer").innerHTML = "Time: " + 0;
 
       resetGame();
     }, 750);
