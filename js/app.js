@@ -154,13 +154,13 @@ const mouseClicked = function() {
   if(number === 5) {
     stars.pop();
     const newStars = starString(stars);
-    document.getElementById("stars").innerHTML = newStars;
+    document.getElementById("stars").innerHTML =  "Stars: " + newStars;
   }
 
   if(number === 10) {
     stars.pop();
     const newStars = starString(stars);
-    document.getElementById("stars").innerHTML = newStars;
+    document.getElementById("stars").innerHTML = "Star: " + newStars;
   }
 }
 
@@ -209,13 +209,30 @@ mouseClicked();
     setTimeout(function() {
       alert(`You won the game with total of ${number} moves, in ${timeInSeconds} seconds!`);
       if(stars.length === 3) {
-        alert(`You did great! Your performance was ${stars.length} stars!`);
+
+        swal({
+        title: "Awesome!",
+        text: `You did great! Your performance was ${stars.length} stars!.Please click ok to reset the game.`,
+        imageUrl: 'img/thumb-up.png'
+      });
+
       }
       if(stars.length === 2) {
-        alert(`You did good! Your performance was ${stars.length} stars!`);
+        swal({
+        title: "Sweet!",
+        text: `You did good! Your performance was ${stars.length} stars!.Please click ok to reset the game.`,
+        imageUrl: 'img/thumb-up.png'
+      });
+
+
       }
       if(stars.length === 1) {
-        alert(`You did OK. Your performance was ${stars.length} star, try to solve the memory game faster next time.`);
+        swal({
+        title: "Sweet!",
+        text: `You did OK. Your performance was ${stars.length} star, try to solve the memory game faster next time.Please click ok to reset the game.`,
+        imageUrl: 'img/thumb-up.png'
+      });
+
       }
       cardsInPlay = [];
       gameScore = 0;
@@ -244,8 +261,8 @@ const checkForMatch = function(){
         }else{
           //if they dont match remove both cards from array and hide the symbols
           setTimeout(function() {
-            document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/back.png");
-            document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/back.png");
+            document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/blueish.jpg");
+            document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/blueish.jpg");
             cardsInPlay[0].clicked = false;
             cardsInPlay[1].clicked = false;
             // alert("thats not match!");
@@ -263,7 +280,7 @@ const checkForMatch = function(){
    //loop through each card, create its HTML and add each card's HTML to the page
 	for(let i=0; i < cards.length; i++){
 		const cardElement= document.createElement("img");
-		cardElement.setAttribute("src", "img/back.png");
+		cardElement.setAttribute("src", "img/blueish.jpg");
 		cardElement.setAttribute("data-id", i);
 		cardElement.addEventListener("click", flipCard);
 		document.getElementById("game-board").appendChild(cardElement);
@@ -303,7 +320,7 @@ const resetGame = function(){
   number = 0;
   stars = ['*', '*', '*'];
   newStars = starString(stars);
-  document.getElementById("stars").innerHTML = newStars;
+  document.getElementById("stars").innerHTML = "Stars:" + newStars;
   document.getElementById("trackScore").innerHTML = gameScore;
   document.getElementById("moves").innerHTML = "Total moves: " + number;
 };

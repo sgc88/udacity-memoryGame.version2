@@ -6,9 +6,8 @@ Udacity- Memory Game
 
 **Memory Game** is a card game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.
 
-
-
 ----------
+
 
 
 ![Alt text](img/screenShot1.png)
@@ -20,6 +19,11 @@ Udacity- Memory Game
 
 
 ![Alt text](img/screenShot3.png)
+
+----------
+
+![Alt text](img/screenShot4.png)
+
 
 ----------
 
