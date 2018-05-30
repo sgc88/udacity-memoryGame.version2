@@ -256,7 +256,6 @@ const checkForMatch = function(){
   //if the list already has another card check to see if two cards match
   if(cardsInPlay.length <= 2){
       	if(cardsInPlay[0].rank === cardsInPlay[1].rank){
-      		alert("you found a match!");
       		gameScore ++;
       		document.getElementById("trackScore").innerHTML= gameScore;
           cardsInPlay = [];
