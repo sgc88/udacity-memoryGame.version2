@@ -262,8 +262,8 @@ const checkForMatch = function(){
         }else{
           //if they dont match remove both cards from array and hide the symbols
           setTimeout(function() {
-            document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/blueish.jpg");
-            document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/blueish.jpg");
+            document.getElementById(cardsInPlay[0].id).setAttribute("src", "img/back8.gif");
+            document.getElementById(cardsInPlay[1].id).setAttribute("src", "img/back8.gif");
             cardsInPlay[0].clicked = false;
             cardsInPlay[1].clicked = false;
             // alert("thats not match!");
@@ -281,7 +281,7 @@ const checkForMatch = function(){
    //loop through each card, create its HTML and add each card's HTML to the page
 	for(let i=0; i < cards.length; i++){
 		const cardElement= document.createElement("img");
-		cardElement.setAttribute("src", "img/blueish.jpg");
+		cardElement.setAttribute("src", "img/back8.gif");
 		cardElement.setAttribute("data-id", i);
 		cardElement.addEventListener("click", flipCard);
 		document.getElementById("game-board").appendChild(cardElement);
